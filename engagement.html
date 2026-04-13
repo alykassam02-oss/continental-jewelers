@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Continental Jewelers</title>
+<title>Engagement | Continental Jewelers</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap');
 
@@ -199,11 +199,22 @@
 
   .slide-bg {
     position: absolute;
-    inset: -4%;
-    background-size: cover;
+    inset: 0;
+    background-size: 85%;
     background-position: center;
+    background-repeat: no-repeat;
     transition: transform 1s var(--ease);
     will-change: transform;
+  }
+  .slide-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to right, #0a0a0a 0%, rgba(10,10,10,0.85) 12%, rgba(10,10,10,0.4) 25%, transparent 42%, transparent 58%, rgba(10,10,10,0.4) 75%, rgba(10,10,10,0.85) 88%, #0a0a0a 100%),
+      linear-gradient(to bottom, #0a0a0a 0%, rgba(10,10,10,0.7) 8%, transparent 20%, transparent 80%, rgba(10,10,10,0.7) 92%, #0a0a0a 100%);
+    z-index: 1;
+    pointer-events: none;
   }
 
   /* Gradient: stronger at bottom for text legibility */
@@ -290,9 +301,33 @@
   }
 
   /* Parallax bg */
-  .slide.active .slide-bg { transform: translateY(0) scale(1.04); }
-  .slide.exit-up .slide-bg { transform: translateY(-6%) scale(1.04); }
-  .slide .slide-bg { transform: translateY(4%) scale(1.04); }
+  .slide.active .slide-bg {
+    position: absolute;
+    inset: 0;
+    background-size: 85%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 1s var(--ease);
+    will-change: transform;
+  }
+  .slide.exit-up .slide-bg {
+    position: absolute;
+    inset: 0;
+    background-size: 85%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 1s var(--ease);
+    will-change: transform;
+  }
+  .slide .slide-bg {
+    position: absolute;
+    inset: 0;
+    background-size: 85%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 1s var(--ease);
+    will-change: transform;
+  }
 
   /* ── SCROLL HINT ── */
   #scroll-hint {
@@ -355,9 +390,24 @@
     z-index: 300;
     transition: width 0.5s ease;
   }
-</style>
+
+  /* ── CINEMATIC VIGNETTE ── */
+  .slide-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at center, transparent 40%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.97) 100%),
+      linear-gradient(to right, rgba(0,0,0,0.9) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.9) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }</style>
 </head>
 <body>
+
+
+
+
+
 
 <div id="progress"></div>
 
@@ -380,7 +430,7 @@
   </a>
 
   <div class="nav-icons">
-    <a href="contact.html">Find a Store</a>
+    <a href="contact.html">Find Our Store</a>
     <a href="contact.html">Contact</a>
   </div>
 
@@ -407,6 +457,7 @@
         <li><a href="#">Wedding Bands</a></li>
         <li><a href="#">Diamond Jewelry</a></li>
         <li><a href="#">Gold Jewelry</a></li>
+        <li><a href="#">Sterling Silver</a></li>
       </ul>
     </div>
     <div class="dd-col">
@@ -426,7 +477,7 @@
         <li><a href="#">Solitaire</a></li>
         <li><a href="#">Halo</a></li>
         <li><a href="#">Three Stone</a></li>
-        <li><a href="#">Vintage</a></li>
+        
         <li><a href="#">Custom</a></li>
       </ul>
     </div>
@@ -485,33 +536,42 @@
 <!-- SLIDES -->
 <div id="slider">
   <div class="slide active">
-    <div class="slide-bg" style="background-color:#1a1a1a;"></div>
+    <div class="slide-bg" style="background-image:url('Photoroom_20260114_155850__1___1_.jpg');background-color:#35353a;"></div>
+    <div class="slide-vignette"></div>
     <div class="slide-overlay"></div>
     <div class="slide-content">
       <p class="slide-eyebrow">Love &amp; Engagement</p>
-      <h1 class="slide-headline">Engagement<br><em>Rings</em></h1>
-      <a href="engagement.html" class="slide-cta">View Engagement Rings</a>
+      <h1 class="slide-headline">Marquise<br><em>Diamond Ring</em></h1>
+      <a href="contact.html" class="slide-cta">Inquire Now</a>
     </div>
   </div>
   <div class="slide">
-    <div class="slide-bg" style="background-color:#12100f;"></div>
+    <div class="slide-bg" style="background-image:url('Photoroom_20260114_162355__1_.jpg');background-color:#1e2128;"></div>
+    <div class="slide-vignette"></div>
     <div class="slide-overlay"></div>
     <div class="slide-content">
       <p class="slide-eyebrow">Love &amp; Engagement</p>
-      <h1 class="slide-headline">Wedding<br><em>Bands</em></h1>
-      <a href="engagement.html" class="slide-cta">View Wedding Bands</a>
+      <h1 class="slide-headline">Radiant Cut<br><em>Diamond Ring</em></h1>
+      <a href="contact.html" class="slide-cta">Inquire Now</a>
     </div>
   </div>
   <div class="slide">
-    <div class="slide-bg" style="background-color:#0f0f14;"></div>
+    <div class="slide-bg" style="background-image:url('Photoroom_20260113_171106__1_.jpg');background-color:#0e0e10;"></div>
+    <div class="slide-vignette"></div>
     <div class="slide-overlay"></div>
     <div class="slide-content">
       <p class="slide-eyebrow">Love &amp; Engagement</p>
-      <h1 class="slide-headline">The Perfect<br><em>Diamond</em></h1>
-      <a href="engagement.html" class="slide-cta">Explore Diamonds</a>
+      <h1 class="slide-headline">Wedding<br><em>Jewelry</em></h1>
+      <a href="engagement.html" class="slide-cta">View All</a>
     </div>
   </div>
 </div>
+
+
+
+
+
+
 
 <!-- Scroll hint -->
 <div id="scroll-hint">
@@ -520,7 +580,7 @@
 </div>
 
 <!-- Counter -->
-<div id="counter"><b id="cur">01</b> / <span id="tot">04</span></div>
+<div id="counter"><b id="cur">01</b> / <span>03</span></div>
 
 <script>
   const slides = Array.from(document.querySelectorAll('.slide'));
