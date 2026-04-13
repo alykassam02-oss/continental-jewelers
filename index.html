@@ -35,7 +35,6 @@
     transition: background 0.5s ease;
   }
 
-  /* Nav links */
   .nav-links {
     display: flex;
     gap: 2rem;
@@ -51,7 +50,6 @@
     transition: color 0.4s;
   }
 
-  /* Nav icons (right side) */
   .nav-icons {
     display: flex;
     align-items: center;
@@ -66,7 +64,6 @@
     transition: color 0.4s;
   }
 
-  /* Logo centred */
   #logo {
     position: absolute;
     left: 50%;
@@ -107,31 +104,25 @@
     transition: background 0.4s;
   }
 
-  /* Color states — white (on dark image) */
   .nav-white .nav-links a,
   .nav-white .nav-icons a,
   .nav-white .logo-top,
   .nav-white .logo-bottom span { color: var(--white); }
   .nav-white .logo-line { background: rgba(255,255,255,0.65); }
 
-  /* Color states — black (on light image) */
   .nav-black .nav-links a,
   .nav-black .nav-icons a,
   .nav-black .logo-top,
   .nav-black .logo-bottom span { color: var(--black); }
   .nav-black .logo-line { background: rgba(0,0,0,0.45); }
 
-  /* ── NAV HOVER: white background ── */
-  #navbar.nav-open {
-    background: #fff;
-  }
+  #navbar.nav-open { background: #fff; }
   #navbar.nav-open .nav-links a,
   #navbar.nav-open .nav-icons a,
   #navbar.nav-open .logo-top,
   #navbar.nav-open .logo-bottom span { color: var(--black) !important; }
   #navbar.nav-open .logo-line { background: rgba(0,0,0,0.4) !important; }
 
-  /* Dropdown mega-menu panel */
   #nav-dropdown {
     position: fixed;
     top: 72px;
@@ -145,15 +136,8 @@
     border-top: 1px solid rgba(0,0,0,0.07);
     box-shadow: 0 8px 24px rgba(0,0,0,0.06);
   }
-  #nav-dropdown.open {
-    max-height: 320px;
-    opacity: 1;
-  }
-  .dropdown-panel {
-    display: none;
-    padding: 2.5rem 5rem 3rem;
-    gap: 4rem;
-  }
+  #nav-dropdown.open { max-height: 320px; opacity: 1; }
+  .dropdown-panel { display: none; padding: 2.5rem 5rem 3rem; gap: 4rem; }
   .dropdown-panel.active { display: flex; }
 
   .dd-col h4 {
@@ -181,11 +165,7 @@
   .dd-col ul li a:hover { color: var(--gold); }
 
   /* ── SLIDES ── */
-  #slider {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-  }
+  #slider { position: fixed; inset: 0; overflow: hidden; }
 
   .slide {
     position: absolute;
@@ -195,7 +175,11 @@
     align-items: center;
     justify-content: flex-end;
     padding-bottom: 6vh;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.95s var(--ease), opacity 0.95s var(--ease);
   }
+  .slide.active { transform: translateY(0); opacity: 1; }
 
   .slide-bg {
     position: absolute;
@@ -217,20 +201,12 @@
     pointer-events: none;
   }
 
-  /* Gradient: stronger at bottom for text legibility */
   .slide-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(0,0,0,0.08) 0%,
-      rgba(0,0,0,0.0) 35%,
-      rgba(0,0,0,0.45) 75%,
-      rgba(0,0,0,0.72) 100%
-    );
+    background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.0) 35%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.72) 100%);
   }
 
-  /* Slide text — bottom-centered like Tiffany */
   .slide-content {
     position: relative;
     z-index: 2;
@@ -241,11 +217,7 @@
     transform: translateY(22px);
     transition: opacity 0.75s 0.25s ease, transform 0.75s 0.25s ease;
   }
-  .slide.active .slide-content {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
+  .slide.active .slide-content { opacity: 1; transform: translateY(0); }
 
   .slide-eyebrow {
     font-family: 'Montserrat', sans-serif;
@@ -281,55 +253,17 @@
   }
   .slide-cta:hover { border-color: var(--gold); color: var(--gold); }
 
-  /* Slide transitions */
-  .slide {
-    transform: translateY(100%);
-    opacity: 0;
-    transition: transform 0.95s var(--ease), opacity 0.95s var(--ease);
-  }
-  .slide.active {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  .slide.exit-up {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  .slide.exit-down {
-    transform: translateY(100%);
-    opacity: 0;
+  .slide-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at center, transparent 40%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.97) 100%),
+      linear-gradient(to right, rgba(0,0,0,0.9) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.9) 100%);
+    z-index: 1;
+    pointer-events: none;
   }
 
-  /* Parallax bg */
-  .slide.active .slide-bg {
-    position: absolute;
-    inset: 0;
-    background-size: 85%;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: transform 1s var(--ease);
-    will-change: transform;
-  }
-  .slide.exit-up .slide-bg {
-    position: absolute;
-    inset: 0;
-    background-size: 85%;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: transform 1s var(--ease);
-    will-change: transform;
-  }
-  .slide .slide-bg {
-    position: absolute;
-    inset: 0;
-    background-size: 85%;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: transform 1s var(--ease);
-    will-change: transform;
-  }
-
-  /* ── SCROLL HINT ── */
+  /* ── UI ── */
   #scroll-hint {
     position: fixed;
     bottom: 2rem;
@@ -365,7 +299,6 @@
     50% { opacity: 1; transform: scaleY(1); }
   }
 
-  /* ── SLIDE COUNTER ── */
   #counter {
     position: fixed;
     left: 50%;
@@ -380,7 +313,6 @@
   }
   #counter b { color: #fff; font-weight: 300; }
 
-  /* ── PROGRESS BAR (top) ── */
   #progress {
     position: fixed;
     top: 0; left: 0;
@@ -390,36 +322,19 @@
     z-index: 300;
     transition: width 0.5s ease;
   }
-
-  /* ── CINEMATIC VIGNETTE ── */
-  .slide-vignette {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 80% at center, transparent 40%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.97) 100%),
-      linear-gradient(to right, rgba(0,0,0,0.9) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.9) 100%);
-    z-index: 1;
-    pointer-events: none;
-  }</style>
+</style>
 </head>
 <body>
-
-
-
-
-
 
 <div id="progress"></div>
 
 <!-- NAV -->
 <header id="navbar" class="nav-white">
-
   <ul class="nav-links">
     <li><a href="jewelry.html" data-menu="jewelry">Jewelry</a></li>
     <li><a href="engagement.html" data-menu="engagement">Engagement</a></li>
     <li><a href="gifts.html" data-menu="gifts">Gifts</a></li>
   </ul>
-
   <a id="logo" href="index.html">
     <div class="logo-top">Continental</div>
     <div class="logo-bottom">
@@ -428,17 +343,14 @@
       <div class="logo-line"></div>
     </div>
   </a>
-
   <div class="nav-icons">
     <a href="contact.html">Find Our Store</a>
     <a href="contact.html">Contact</a>
   </div>
-
 </header>
 
 <!-- MEGA MENU DROPDOWN -->
 <div id="nav-dropdown">
-
   <div class="dropdown-panel" id="menu-jewelry">
     <div class="dd-col">
       <h4>Categories</h4>
@@ -469,7 +381,6 @@
       </ul>
     </div>
   </div>
-
   <div class="dropdown-panel" id="menu-engagement">
     <div class="dd-col">
       <h4>Engagement Rings</h4>
@@ -477,7 +388,6 @@
         <li><a href="#">Solitaire</a></li>
         <li><a href="#">Halo</a></li>
         <li><a href="#">Three Stone</a></li>
-        
         <li><a href="#">Custom</a></li>
       </ul>
     </div>
@@ -501,7 +411,6 @@
       </ul>
     </div>
   </div>
-
   <div class="dropdown-panel" id="menu-gifts">
     <div class="dd-col">
       <h4>By Recipient</h4>
@@ -530,58 +439,47 @@
       </ul>
     </div>
   </div>
-
 </div>
 
 <!-- SLIDES -->
 <div id="slider">
   <div class="slide active">
-    <div class="slide-bg" style="background-image:url('Photoroom_20260114_155850__1___1_.jpg');background-color:#35353a;"></div>
+    <div class="slide-bg" style="background-image:url('images/ring1.jpg');background-color:#35353a;"></div>
     <div class="slide-vignette"></div>
     <div class="slide-overlay"></div>
     <div class="slide-content">
-      
       <h1 class="slide-headline">The Art of<br><em>Timeless Beauty</em></h1>
       <a href="jewelry.html" class="slide-cta">Explore the Collection</a>
     </div>
   </div>
   <div class="slide">
-    <div class="slide-bg" style="background-image:url('IMG_0793.jpg');background-color:#010102;"></div>
+    <div class="slide-bg" style="background-image:url('images/cross_white.jpg');background-color:#010102;"></div>
     <div class="slide-vignette"></div>
     <div class="slide-overlay"></div>
     <div class="slide-content">
-      
       <h1 class="slide-headline">A Legacy<br><em>in Gold</em></h1>
       <a href="jewelry.html" class="slide-cta">Shop Bracelets</a>
     </div>
   </div>
   <div class="slide">
-    <div class="slide-bg" style="background-image:url('Photoroom_20260114_162355__1_.jpg');background-color:#1e2128;"></div>
+    <div class="slide-bg" style="background-image:url('images/ring2.jpg');background-color:#1e2128;"></div>
     <div class="slide-vignette"></div>
     <div class="slide-overlay"></div>
     <div class="slide-content">
-      
       <h1 class="slide-headline">Forever<br><em>Begins Here</em></h1>
       <a href="engagement.html" class="slide-cta">View Engagement Rings</a>
     </div>
   </div>
   <div class="slide">
-    <div class="slide-bg" style="background-image:url('Photoroom_20260114_170330__1_.jpg');background-color:#0e0b0d;"></div>
+    <div class="slide-bg" style="background-image:url('images/pendants.jpg');background-color:#0e0b0d;"></div>
     <div class="slide-vignette"></div>
     <div class="slide-overlay"></div>
     <div class="slide-content">
-      
       <h1 class="slide-headline">Give the Gift<br><em>of Wonder</em></h1>
       <a href="gifts.html" class="slide-cta">Shop Gifts</a>
     </div>
   </div>
 </div>
-
-
-
-
-
-
 
 <!-- Scroll hint -->
 <div id="scroll-hint">
@@ -606,7 +504,6 @@
 
   function pad(n) { return String(n + 1).padStart(2, '0'); }
 
-  // Position all non-active slides off-screen
   slides.forEach((s, i) => {
     if (i !== 0) {
       s.style.transform = 'translateY(100%)';
@@ -615,35 +512,28 @@
     }
   });
 
-  // ── Auto-detect brightness of the top portion of each slide image ──
   const themeCache = {};
 
   function applyNavTheme(index, theme) {
     themeCache[index] = theme;
-    // Only apply if this is still the active slide
     if (index === current) {
       navbar.className = theme === 'dark' ? 'nav-white' : 'nav-black';
     }
   }
 
   function detectAndApplyTheme(index) {
-    // If already cached, apply immediately
     if (themeCache[index] !== undefined) {
       navbar.className = themeCache[index] === 'dark' ? 'nav-white' : 'nav-black';
       return;
     }
-
     const bg = slides[index].querySelector('.slide-bg');
     const rawUrl = bg.style.backgroundImage.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
-
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.onload = () => {
       try {
         const canvas = document.createElement('canvas');
-        // Sample a wide strip across the very top (where the nav lives)
-        canvas.width = 100;
-        canvas.height = 15;
+        canvas.width = 100; canvas.height = 15;
         const ctx = canvas.getContext('2d');
         ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight * 0.1, 0, 0, 100, 15);
         const px = ctx.getImageData(0, 0, 100, 15).data;
@@ -651,36 +541,27 @@
         for (let i = 0; i < px.length; i += 4) {
           lum += 0.299 * px[i] + 0.587 * px[i+1] + 0.114 * px[i+2];
         }
-        const avg = lum / (px.length / 4);
-        applyNavTheme(index, avg < 140 ? 'dark' : 'light');
-      } catch(e) {
-        applyNavTheme(index, 'dark');
-      }
+        applyNavTheme(index, (lum / (px.length / 4)) < 140 ? 'dark' : 'light');
+      } catch(e) { applyNavTheme(index, 'dark'); }
     };
     img.onerror = () => applyNavTheme(index, 'dark');
-
-    // Apply a default immediately so the nav isn't wrong while image loads
     navbar.className = 'nav-white';
     img.src = rawUrl;
   }
 
-  // Pre-load brightness for all slides on page load
   slides.forEach((_, i) => detectAndApplyTheme(i));
 
   function goTo(next) {
     if (busy || next === current || next < 0 || next >= total) return;
     busy = true;
-
     const prev = current;
     const goingDown = next > prev;
 
-    // Outgoing slide exits
     slides[prev].style.transition = 'transform 0.95s cubic-bezier(0.77,0,0.18,1), opacity 0.95s cubic-bezier(0.77,0,0.18,1)';
     slides[prev].style.transform  = goingDown ? 'translateY(-100%)' : 'translateY(100%)';
     slides[prev].style.opacity    = '0';
     slides[prev].classList.remove('active');
 
-    // Incoming slide snaps to starting position
     slides[next].style.transition = 'none';
     slides[next].style.transform  = goingDown ? 'translateY(100%)' : 'translateY(-100%)';
     slides[next].style.opacity    = '0';
@@ -697,15 +578,11 @@
     current = next;
     curEl.textContent = pad(current);
     progress.style.width = (current / (total - 1) * 100) + '%';
-
-    // Apply cached theme or re-detect
     detectAndApplyTheme(current);
-
     if (!hinted) { hint.classList.add('hidden'); hinted = true; }
     setTimeout(() => { busy = false; }, 1050);
   }
 
-  // Wheel
   let wCool = false;
   window.addEventListener('wheel', e => {
     e.preventDefault();
@@ -716,23 +593,20 @@
     else goTo(current - 1);
   }, { passive: false });
 
-  // Touch swipe
   let ty = 0;
   window.addEventListener('touchstart', e => { ty = e.touches[0].clientY; }, { passive: true });
   window.addEventListener('touchend', e => {
     const d = ty - e.changedTouches[0].clientY;
     if (Math.abs(d) < 40) return;
-    if (d > 0) goTo(current + 1);
-    else goTo(current - 1);
+    if (d > 0) goTo(current + 1); else goTo(current - 1);
   });
 
-  // Keyboard
   window.addEventListener('keydown', e => {
     if (e.key === 'ArrowDown') goTo(current + 1);
     if (e.key === 'ArrowUp')   goTo(current - 1);
   });
 
-  // ── MEGA MENU HOVER ──
+  // ── MEGA MENU ──
   const dropdown  = document.getElementById('nav-dropdown');
   const menuLinks = document.querySelectorAll('.nav-links a[data-menu]');
   const panels    = document.querySelectorAll('.dropdown-panel');
@@ -758,7 +632,6 @@
   menuLinks.forEach(link => {
     link.addEventListener('mouseenter', () => openMenu(link.dataset.menu));
   });
-
   navbar.addEventListener('mouseleave', scheduleClose);
   navbar.addEventListener('mouseenter', () => clearTimeout(closeTimer));
   dropdown.addEventListener('mouseenter', () => clearTimeout(closeTimer));
